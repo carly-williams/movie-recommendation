@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>API Hack - TasteKid</title>
+	<link rel="stylesheet" href="css/styles.css">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
+</head>
+<body>
+	<header>
+		<div>
+			<div class="title">movie night in</div>
+			<div class="subtitle">powered by TasteKid</div>
+		</div>
+		<div class="search">
+			<input class="input-query" type="text" placeholder='Enter a movie -- ie. The Matrix' name="movie" size="30" autofocus required><button class="btn-search"><i class="fa fa-search" aria-hidden="true"></i></button>
+		</div>
+	</header>
+	<section>
+		<div class="txt-label">if you like</div>
+		<div class="movie-entered"></div>
+	</section>
+	<section>
+		<div class="txt-label">we recommend</div>
+		<div class="movie-results"></div>
+	</section>
+
+	<div class="templates hidden">
+		<div class="input-movie">
+			<span class="movie-title"></span>
+		</div>
+
+		<div class="result-movie">
+			<span class="movie-title"></span>
+		</div>
+		
+		<div class="error">
+			<p>Uh-oh! Something went wrong with your request. Here's what we know:</p>
+		</div>
+	</div>
+
+	<script src="//code.jquery.com/jquery-latest.min.js"></script>
+	<script src="js/app.js"></script>
+</body>
+</html>

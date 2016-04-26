@@ -1,0 +1,97 @@
+html {
+	box-sizing: border-box;
+	-webkit-font-smoothing: antialiased;
+}
+
+*, *:before, *:after {
+	box-sizing: inherit;
+}
+
+body {
+	font-family: 'Open Sans', sans-serif;
+	margin: 0;
+	padding: 0;
+}
+
+header {
+	display: flex;
+	justify-content: center;
+	margin: 14px 0px 30px 0px;
+}
+
+section {
+	width: 80%;
+  margin: 44px auto;
+}
+
+.title {
+	font-size: 36px;
+	color: #FF8413;
+}
+
+.subtitle {
+	text-align: right; 
+	color: #969696;
+}
+
+.search {
+	margin-top: 4px;
+}
+
+.input-query {
+  width: 32rem;
+  font-size: 15px;
+  height: 3.5rem;
+  /*height: 56px;*/
+  margin-left: 22px;
+  border: 1px solid #C3C3C3;
+  border-right: 0;
+  padding: 13px;
+}
+
+.btn-search {
+	height: 3.5rem;
+  background: white;
+  border: 1px solid #C3C3C3;
+  border-left: 0;
+  font-size: 18px;
+  cursor: pointer;
+}
+
+.txt-label {
+  margin-bottom: 17px;
+  color: #FF8413;
+  font-weight: 600;
+  font-size: 17px;
+}
+
+.fa-search {
+	padding: 9px;
+}
+
+.movie-entered span,
+.movie-results span {
+	padding: 3px 14px;
+  border-right: 1px solid #B3B3B3;
+  border-left: 1px solid #B3B3B3;
+  margin-left: -1px;
+}
+
+/*.movie-entered .input-movie:first-child span,
+.movie-results .result-movie:first-child span {
+  border-left: 1px solid #B3B3B3;
+}*/
+
+.input-movie,
+.result-movie {
+	display: inline-block;
+	margin-bottom: 16px;
+}
+
+.movie-title {
+	cursor: pointer;
+}
+
+.hidden {
+	display: none;
+}
