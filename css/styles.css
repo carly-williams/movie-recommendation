@@ -91,12 +91,17 @@ section {
 .movie-info {
 	display: flex;
   align-items: flex-start;
+  margin-top: 35px;
 }
 
 .movie-teaser {
 	line-height: 24px;
   font-size: 14px;
   margin-right: 20px;
+}
+
+.movie-teaser a {
+	text-decoration: none;
 }
 
 .no-info {

@@ -29,8 +29,12 @@ $(document).ready( function() {
 	$('.movie-results').on('click', '.movie-title', function(event){
 		var num = $(this).attr("result-num");
 		var teaser = resultMovies[num].wTeaser;
+		if (teaser.length > 1055) {
+			teaser = teaser.substring(0,1050) + '<a href="' + resultMovies[num].wUrl + '" target="_blank">.....</a>';
+		}
 		var video = resultMovies[num].yUrl;
-		$('.movie-teaser').text(teaser);
+		$('.movie-teaser').html(teaser);
+
 		var embeddedVideo = '<iframe title="YouTube video player" class="youtube-player" type="text/html" width="450" height="330" src="' + video + '" frameborder="0" allowFullScreen></iframe>';
 		$('.movie-youtube').html(embeddedVideo);
 	});
@@ -38,8 +42,12 @@ $(document).ready( function() {
 	$('.movie-entered').on('click', '.movie-title', function(event){
 		var num = $(this).attr("result-num");
 		var teaser = inputMovies[num].wTeaser;
+		if (teaser.length > 1055) {
+			teaser = teaser.substring(0,1050) + '<a href="' + inputMovies[num].wUrl + '" target="_blank">.....</a>';
+		}
 		var video = inputMovies[num].yUrl;
-		$('.movie-teaser').text(teaser);
+
+		$('.movie-teaser').html(teaser);
 		var embeddedVideo = '<iframe title="YouTube video player" class="youtube-player" type="text/html" width="450" height="330" src="' + video + '" frameborder="0" allowFullScreen></iframe>';
 		$('.movie-youtube').html(embeddedVideo);
 	});
@@ -102,6 +110,7 @@ $(document).ready( function() {
 					inputMovies[i].Name = item.Name;
 					inputMovies[i].wTeaser = item.wTeaser;
 					inputMovies[i].yUrl = item.yUrl;
+					inputMovies[i].wUrl = item.wUrl;
 					var movie = showInputMovies(item, i);
 					$('.movie-entered').append(movie);
 				}
@@ -111,6 +120,7 @@ $(document).ready( function() {
 				resultMovies[i].Name = item.Name;
 				resultMovies[i].wTeaser = item.wTeaser;
 				resultMovies[i].yUrl = item.yUrl;
+				resultMovies[i].wUrl = item.wUrl;
 				var movie = showMovieResults(item, i);
 				$('.movie-results').append(movie);
 			});		
