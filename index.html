@@ -13,7 +13,7 @@
 			<div class="subtitle">powered by TasteKid</div>
 		</div>
 		<div class="search">
-			<input class="input-query" type="text" placeholder='Enter a movie -- ie. The Matrix' name="movie" size="30" autofocus required><button class="btn-search"><i class="fa fa-search" aria-hidden="true"></i></button>
+			<input class="input-query" type="text" placeholder='Enter a movie or movies -- ie. aliens, matrix' name="movie" size="30" autofocus required><button class="btn-search"><i class="fa fa-search" aria-hidden="true"></i></button>
 		</div>
 	</header>
 	<section>
@@ -25,13 +25,17 @@
 		<div class="movie-results"></div>
 	</section>
 
+	<section class="movie-info">
+		<div class="movie-teaser"></div>
+		<div class="movie-youtube"></div>		
+	</section>
 	<div class="templates hidden">
 		<div class="input-movie">
 			<span class="movie-title"></span>
 		</div>
 
 		<div class="result-movie">
-			<span class="movie-title"></span>
+			<span class="movie-title" result-num></span>
 		</div>
 		
 		<div class="error">

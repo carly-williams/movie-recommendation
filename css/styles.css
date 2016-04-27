@@ -16,12 +16,12 @@ body {
 header {
 	display: flex;
 	justify-content: center;
-	margin: 14px 0px 30px 0px;
+	margin: 14px 0px 45px 0px;
 }
 
 section {
 	width: 80%;
-  margin: 44px auto;
+  margin: 23px auto;
 }
 
 .title {
@@ -63,6 +63,7 @@ section {
   color: #FF8413;
   font-weight: 600;
   font-size: 17px;
+  display: none;
 }
 
 .fa-search {
@@ -77,11 +78,6 @@ section {
   margin-left: -1px;
 }
 
-/*.movie-entered .input-movie:first-child span,
-.movie-results .result-movie:first-child span {
-  border-left: 1px solid #B3B3B3;
-}*/
-
 .input-movie,
 .result-movie {
 	display: inline-block;
@@ -92,6 +88,20 @@ section {
 	cursor: pointer;
 }
 
+.movie-info {
+	display: flex;
+  align-items: flex-start;
+}
+
+.movie-teaser {
+	line-height: 24px;
+  font-size: 14px;
+  margin-right: 20px;
+}
+
+.no-info {
+	margin-bottom: 20px;
+}
 .hidden {
 	display: none;
 }
