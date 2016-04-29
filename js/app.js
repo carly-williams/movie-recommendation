@@ -3,27 +3,45 @@ $(document).ready( function() {
 	var resultMovies = [];
 	var inputMovies = [];
 
-	$('.btn-search').click(function(){
+	function clearFields() {
 		$('.movie-entered').html('');
 		$('.movie-results').html('');
 		$('.movie-teaser').text('');
 		$('.movie-youtube').html('');
-		$(".txt-label").css("display", "none");
-		var input_movie = $(".input-query").val();
-		getRecommendations(input_movie);
+		$(".txt-label").css("display", "none");		
+	}
+
+	function submitQuery() {
+		clearFields();
+		var query = $(".query").val();
+		getRecommendations(query);		
+	}
+
+	$('.btn-search').click(function(){
+		submitQuery();
 	});
 
-	$('.input-query').keydown(function(event) {
+	$('.query').keydown(function(event) {
 		if (event.keyCode === 13) {
 			event.preventDefault();
-			$('.movie-entered').html('');
-			$('.movie-results').html('');
-			$('.movie-teaser').text('');
-			$('.movie-youtube').html('');
-			$(".txt-label").css("display", "none");
-			var input_movie = $(".input-query").val();
-			getRecommendations(input_movie);
+			submitQuery();
 		}
+	});
+
+
+	$('.movie-entered').on('click', '.movie-title', function(event){
+
+		var num = $(this).attr("result-num");
+		var teaser = inputMovies[num].wTeaser;
+		if (teaser.length > 855) {
+			teaser = teaser.substring(0,850) + '<a href="' + inputMovies[num].wUrl + '" target="_blank">.....</a>';
+		}
+		$('.movie-teaser').html(teaser);
+		var video = inputMovies[num].yUrl;
+
+		
+		var embeddedVideo = '<iframe title="YouTube video player" class="youtube-player" type="text/html" width="450" height="330" src="' + video + '" frameborder="0" allowFullScreen></iframe>';
+		$('.movie-youtube').html(embeddedVideo);
 	});
 
 	$('.movie-results').on('click', '.movie-title', function(event){
@@ -39,23 +57,6 @@ $(document).ready( function() {
 		$('.movie-youtube').html(embeddedVideo);
 	});
 
-	$('.movie-entered').on('click', '.movie-title', function(event){
-		var num = $(this).attr("result-num");
-		var teaser = inputMovies[num].wTeaser;
-		if (teaser.length > 1055) {
-			teaser = teaser.substring(0,1050) + '<a href="' + inputMovies[num].wUrl + '" target="_blank">.....</a>';
-		}
-		var video = inputMovies[num].yUrl;
-
-		$('.movie-teaser').html(teaser);
-		var embeddedVideo = '<iframe title="YouTube video player" class="youtube-player" type="text/html" width="450" height="330" src="' + video + '" frameborder="0" allowFullScreen></iframe>';
-		$('.movie-youtube').html(embeddedVideo);
-	});
-
-
-
-// this function takes the answerer object returned by the StackOverflow request
-// and returns new result to be appended to DOM
 
 	function showInputMovies(info, num) {
 		// clone our input-movie template code
@@ -81,10 +82,17 @@ $(document).ready( function() {
 		return result;
 	}
 
-	function getRecommendations(movie_name) {
+	// takes error string and turns it into displayable DOM element
+	function showError(error) {
+		var errorElem = $('.templates .error').clone();
+		var errorText = '<p>' + error + '</p>';
+		errorElem.append(errorText);
+	}
+
+	function getRecommendations(movieNames) {
 		// the parameters we need to pass in our request to TasteKid's API
 		var request = { 
-			q: movie_name,
+			q: movieNames,
 			type: 'movies',
 			k: '220566-Thinkful-Z65T1U0T',
 			verbose: 1
@@ -97,7 +105,6 @@ $(document).ready( function() {
 			type: "GET"
 		})
 		.done(function(result){ //this waits for the ajax to return with a succesful promise object
-			console.log(result.Similar);
 			//$.each is a higher order function. It takes an array and a function as an argument.
 			//The function is executed once for each item in the array.
 			$.each(result.Similar.Info, function(i, item) {
@@ -126,9 +133,8 @@ $(document).ready( function() {
 			});		
 		})
 		.fail(function(jqXHR, error){ //this waits for the ajax to return with an error promise object
-			console.log("fail");
-			// var errorElem = showError(error);
-			// $('.search-results').append(errorElem);
+			var errorElem = showError(error);
+			$('.movie-results').append(errorElem);
 		});
 	}
 

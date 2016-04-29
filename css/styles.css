@@ -16,7 +16,7 @@ body {
 header {
 	display: flex;
 	justify-content: center;
-	margin: 14px 0px 45px 0px;
+	margin: 24px 20px 38px 20px;
 }
 
 section {
@@ -38,11 +38,10 @@ section {
 	margin-top: 4px;
 }
 
-.input-query {
+.query {
   width: 32rem;
   font-size: 15px;
   height: 3.5rem;
-  /*height: 56px;*/
   margin-left: 22px;
   border: 1px solid #C3C3C3;
   border-right: 0;
@@ -109,4 +108,57 @@ section {
 }
 .hidden {
 	display: none;
+}
+
+@media only screen and (max-width: 1100px) {
+	.movie-info {
+		display: block;
+		text-align: left;
+	}
+	.movie-teaser {
+		margin-bottom: 30px;
+	}
+}
+
+@media only screen and (max-width: 845px) {
+	.query {
+		width: 22rem;
+	}
+}
+
+@media only screen and (max-width: 675px) {
+	header {
+		display: inline-block;
+		text-align: center;
+	}
+	header > div {
+		display: inline-block;
+		vertical-align: middle;
+	}
+	.search {
+		margin-top: 20px;
+	}
+}
+
+@media only screen and (max-width: 540px) {
+	iframe {
+		width: 350px;
+    height: 250px;		
+	}
+	.query {
+		width: 18rem;
+	}
+	section {
+		width: 90%;
+	}
+}
+
+@media only screen and (max-width: 425px) {
+	.query {
+		width: 13rem;
+	}
+	iframe {
+		width: 300px;
+    height: 200px;		
+	}
 }
