@@ -8,7 +8,8 @@ $(document).ready( function() {
 		$('.movie-results').html('');
 		$('.movie-teaser').text('');
 		$('.movie-youtube').html('');
-		$(".txt-label").css("display", "none");		
+		$(".txt-label").css("display", "none");
+		$(".intro").css("display", "none");	
 	}
 
 	function submitQuery() {
